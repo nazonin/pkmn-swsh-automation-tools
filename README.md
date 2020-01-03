@@ -1,4 +1,6 @@
-# Pokémon Sword & Shield automation tools
+# Repo archieved because I switched to [codeberg.org/jarlave](https://codeberg.org/jarlave/pkmn-swsh-automation-tools)
+
+## Pokémon Sword & Shield automation tools
 
 Automatically farms Watts/Masterballs/Fossils at digging duo and Shiny fossil Pokemon (with repeat-a) in Pokémon Sword & Shield by emulating a controller on a Teensy++ 2.0
 
