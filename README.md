@@ -1,4 +1,4 @@
-# Repo archieved because I switched to [codeberg.org/jarlave](https://codeberg.org/jarlave/pkmn-swsh-automation-tools)
+# Repo archived because I switched to [codeberg.org/jarlave](https://codeberg.org/jarlave/pkmn-swsh-automation-tools)
 
 ## Pokémon Sword & Shield automation tools
 
