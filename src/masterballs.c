@@ -53,7 +53,7 @@ static const command step[] = {
 	// Go into game
 	{ HOME,       5 },	{ NOTHING,  100 },
 	{ A,          5 },	{ NOTHING,  100 },
-	
+
 	// go to date and time settings
 	{ HOME,       5 },		{ NOTHING,  25 },
 	{ DOWN,       5 },		{ NOTHING,  2 },
@@ -84,7 +84,7 @@ static const command step[] = {
 	{ UP,         5 },		{ NOTHING,  5 },
 	{ RIGHT,      25 },		{ NOTHING,  5 },
 	{ A,          5 },		{ NOTHING,  5 },
-	
+
 	// return to the game
 	{ HOME,       5 },		{ NOTHING,  25 },
 	{ A,          5 },		{ NOTHING,  25 },

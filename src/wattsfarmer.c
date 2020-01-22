@@ -31,6 +31,8 @@ typedef enum {
 	B,
 	L,
 	R,
+	PLUS,
+	MINUS,
 	HOME,
 	NOTHING,
 	TRIGGERS
@@ -43,31 +45,23 @@ typedef struct {
 
 static const command step[] = {
 	// Setup controller
-						{ NOTHING,  250 },
+						{ NOTHING,  150 },
 	{ TRIGGERS,   5 },	{ NOTHING,  150 },
 	{ TRIGGERS,   5 },	{ NOTHING,  150 },
-	{ A,          5 },	{ NOTHING,  250 },
+	{ A,          5 },	{ NOTHING,  100 },
 
 	// Go into game
-	{ HOME,       5 },	{ NOTHING,  250 },
-	{ A,          5 },	{ NOTHING,  250 },
+	{ HOME,       5 },	{ NOTHING,  100 },
+	{ A,          5 },	{ NOTHING,  100 },
 
-	// enter den with 2000 watts
-	{ A,          5 },	{ NOTHING,  10 },
-	{ A,          5 },	{ NOTHING,  10 },
-	{ A,          5 },	{ NOTHING,  20 },
-
-	// start search
-	{ A,          5 },	{ NOTHING,  300 },
-
-	// one day backward
-	{ HOME,       5 },		{ NOTHING,  80 },
+	// go to date and time settings
+	{ HOME,       5 },		{ NOTHING,  25 },
 	{ DOWN,       5 },		{ NOTHING,  2 },
 	{ RIGHT,      5 },		{ NOTHING,  1 },
 	{ RIGHT,      5 },		{ NOTHING,  1 },
 	{ RIGHT,      5 },		{ NOTHING,  1 },
 	{ RIGHT,      5 },		{ NOTHING,  1 },
-	{ A,          5 },		{ NOTHING,  40 },
+	{ A,          5 },		{ NOTHING,  25 },
 	{ DOWN,       90 },		{ NOTHING,  10 },
 	{ A,          5 },		{ NOTHING,  20 },
 	{ DOWN,       5 },		{ NOTHING,  5 },
@@ -77,51 +71,30 @@ static const command step[] = {
 	{ A,          5 },		{ NOTHING,  20 },
 	{ DOWN,       5 },		{ NOTHING,  5 },
 	{ DOWN,       5 },		{ NOTHING,  5 },
+
+	// increase day by one
 	{ A,          5 },		{ NOTHING,  20 },
 	{ DOWN,       5 },		{ NOTHING,  5 },
-	{ RIGHT,      25 },		{ NOTHING,  5 },
+	{ RIGHT,      25},		{ NOTHING,  5 },
 	{ A,          5 },		{ NOTHING,  5 },
-	{ HOME,       5 },		{ NOTHING,  80 },
-	{ A,          5 },		{ NOTHING,  20 },
 
-	// leave den
-	{ B,          5 },		{ NOTHING,  40 },
-	{ A,          5 },		{ NOTHING,  220 },
-
-	// enter den without 2000 watts
-	{ A,          5 },		{ NOTHING,  20 },
-
-	// start search
-	{ A,          5 },		{ NOTHING,  300 },
-
-	// one day forward
-	{ HOME,       5 },		{ NOTHING,  80 },
-	{ DOWN,       5 },		{ NOTHING,  2 },
-	{ RIGHT,      5 },		{ NOTHING,  1 },
-	{ RIGHT,      5 },		{ NOTHING,  1 },
-	{ RIGHT,      5 },		{ NOTHING,  1 },
-	{ RIGHT,      5 },		{ NOTHING,  1 },
-	{ A,          5 },		{ NOTHING,  40 },
-	{ DOWN,       90 },		{ NOTHING,  10 },
-	{ A,          5 },		{ NOTHING,  20 },
-	{ DOWN,       5 },		{ NOTHING,  5 },
-	{ DOWN,       5 },		{ NOTHING,  5 },
-	{ DOWN,       5 },		{ NOTHING,  5 },
-	{ DOWN,       5 },		{ NOTHING,  5 },
-	{ A,          5 },		{ NOTHING,  20 },
-	{ DOWN,       5 },		{ NOTHING,  5 },
-	{ DOWN,       5 },		{ NOTHING,  5 },
-	{ A,          5 },		{ NOTHING,  20 },
+	// decrease day by one
+	{ A,          5 },		{ NOTHING,  5 },
+	{ LEFT,       25 },		{ NOTHING,  5 },
 	{ UP,         5 },		{ NOTHING,  5 },
 	{ RIGHT,      25 },		{ NOTHING,  5 },
 	{ A,          5 },		{ NOTHING,  5 },
-	{ HOME,       5 },		{ NOTHING,  80 },
-	{ A,          5 },		{ NOTHING,  20 },
 
-	// leave den
-	{ B,          5 },		{ NOTHING,  40 },
-	{ A,          5 },		{ NOTHING,  220 },
+	// return to the game
+	{ HOME,       5 },		{ NOTHING,  25 },
+	{ A,          5 },		{ NOTHING,  25 },
 
+	// open and close den
+	{ A,          5 },		{ NOTHING,  25 },
+	{ B,          5 },		{ NOTHING,  25 },
+	{ B,          5 },		{ NOTHING,  25 },
+	{ B,          5 },		{ NOTHING,  25 },
+	{ B,          5 },		{ NOTHING,  25 }
 };
 
 // Main entry point.
@@ -345,7 +318,7 @@ void GetNextReport(USB_JoystickReport_Input_t* const ReportData) {
 					break;
 
 				case RIGHT:
-					ReportData->LX = STICK_MAX;				
+					ReportData->LX = STICK_MAX;
 					break;
 
 				case A:
@@ -358,6 +331,22 @@ void GetNextReport(USB_JoystickReport_Input_t* const ReportData) {
 
 				case R:
 					ReportData->Button |= SWITCH_R;
+					break;
+
+				case X:
+					ReportData->Button |= SWITCH_X;
+					break;
+				
+				case Y:
+					ReportData->Button |= SWITCH_Y;
+					break;
+
+				case PLUS:
+					ReportData->Button |= SWITCH_PLUS;
+					break;
+
+				case MINUS:
+					ReportData->Button |= SWITCH_MINUS;
 					break;
 
 				case HOME:
