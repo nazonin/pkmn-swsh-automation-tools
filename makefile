@@ -19,3 +19,6 @@ wildarea:
 
 release:
 	make -f releasebox.mk
+	
+clean:
+	rm -f *.bin *.eep *.elf *.lss *.map *.sym
